@@ -22,6 +22,7 @@ class NewConverter {
   }
   getKursFromBot(){
    const tg = window.Telegram.WebApp;
+  tg.expand();
    const data = { message: "Hello, Bot!" };
             tg.sendData(JSON.stringify(data));
  }
