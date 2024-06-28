@@ -20,16 +20,12 @@ class NewConverter {
       console.log(sendValue);
     });
   }
-  getKursFromBot() {
-    if (window.Telegram.WebApp) {
-      const initData = window.Telegram.WebApp.initDataUnsafe;
-      const resultSpan = document.querySelector('.result');
-      resultSpan.textContent = initData;
-      console.log("Received data:", initData);
-    } else {
-      console.error("Telegram WebApp не доступен.");
-    }
-  }
+  getKursFromBot(){
+   const tg = window.Telegram.WebApp;
+   const data = { message: "Hello, Bot!" };
+            tg.sendData(JSON.stringify(data));
+   tg.ready();
+ }
 }
 
 const converter = new NewConverter();
