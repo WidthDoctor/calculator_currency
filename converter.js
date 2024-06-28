@@ -1,42 +1,33 @@
-const fs = require("fs");
-const cheerio = require("cheerio");
-const questions = require("./questions.json");
-const city = document.getElementById('city');
-console.log(city);
+class NewConverter {
+  constructor() {
+    this.getCity();
+    this.getSum();
+    this.getKursFromBot();
+  }
 
-class NewConverter{
-    constructor(){
+  getCity() {
+    const city = document.getElementById("city");
+    console.log(city.value);
+    city.addEventListener("change", (e) => {
+      console.log(e.target.value);
+    });
+  }
 
+  getSum() {
+    const sumInput = document.getElementById("summa");
+    sumInput.addEventListener("keyup", (e) => {
+      let sendValue = sumInput.value;
+      console.log(sendValue);
+    });
+  }
+  getKursFromBot() {
+    if (window.Telegram.WebApp) {
+      const initData = window.Telegram.WebApp.initDataUnsafe;
+      console.log("Received data:", initData);
+    } else {
+      console.error("Telegram WebApp не доступен.");
     }
-    async currentCource(city, userId) {
-        const questionsData = fs.readFileSync("questions.json");
-        const questions = JSON.parse(questionsData);
-        const cityURL = questions.cityURL[city];
-        try {
-          const fetchModule = await import("node-fetch");
-          const fetch = fetchModule.default;
-          const response = await fetch(cityURL);
-          const html = await response.text();
-
-          const $ = cheerio.load(html); // Загружаем HTML с помощью Cheerio
-
-          const currencyRates = {}; // Создаем объект для хранения курсов валют
-
-          $("span.kurs").each((index, element) => {
-            const id = $(element).attr("id");
-            const content = $(element).text();
-
-            // Разделяем id по символу подчеркивания и создаем соответствующий объект
-            const [currencyId, exchangeType] = id.split("_");
-            if (!currencyRates[currencyId]) {
-              currencyRates[currencyId] = {}; // Создаем объект для курсов для данной валюты
-            }
-            currencyRates[currencyId][exchangeType] = content;
-          });
-
-          this.sendCurrentRate(currencyRates, userId, city);
-        } catch (error) {
-          console.error("Произошла ошибка:", error);
-        }
-      } //курс
+  }
 }
+
+const converter = new NewConverter();

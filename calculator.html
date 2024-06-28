@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>calculator</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
     <div class="calculator">
@@ -32,9 +33,12 @@
                 <option value="sale">Sale</option>
             </select>
         </div>
-
-        <input type="number">
+<div class="menu">
+    <input type="number" name="summa" id="summa">
+    <input type="number" name="kurs" id="kurs" placeholder="123" disabled="true">
+</div>
         <div class="display">
+            <span class="result">123</span>
         </div>
     </div>
     <script type="module" src="converter.js"></script>
