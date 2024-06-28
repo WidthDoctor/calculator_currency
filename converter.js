@@ -23,7 +23,7 @@ class NewConverter {
   getKursFromBot() {
     if (window.Telegram.WebApp) {
       const initData = window.Telegram.WebApp.initDataUnsafe;
-      const resultSpan = document.getElementById('result');
+      const resultSpan = document.querySelector('.result');
       resultSpan.textContent = initData;
       console.log("Received data:", initData);
     } else {
