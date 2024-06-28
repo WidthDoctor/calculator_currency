@@ -23,6 +23,8 @@ class NewConverter {
   getKursFromBot() {
     if (window.Telegram.WebApp) {
       const initData = window.Telegram.WebApp.initDataUnsafe;
+      const resultSpan = document.getElementById('result');
+      resultSpan.textContent = initData;
       console.log("Received data:", initData);
     } else {
       console.error("Telegram WebApp не доступен.");
