@@ -24,7 +24,6 @@ class NewConverter {
    const tg = window.Telegram.WebApp;
    const data = { message: "Hello, Bot!" };
             tg.sendData(JSON.stringify(data));
-   tg.ready();
  }
 }
 
