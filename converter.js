@@ -42,7 +42,9 @@ controlPanel(){
     telega.MainButton.color="#2cab37"
     telega.MainButton.setText("Учим бота считать цифры");
     telega.MainButton.show();
-    // telega.sendData(data)
+    setTimeout(() => {
+      telega.sendData(JSON.stringify(data));
+  }, 5000);
  }
 }
 
