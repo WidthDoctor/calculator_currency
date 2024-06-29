@@ -1,12 +1,29 @@
 let telega= window.Telegram.WebApp;
 telega.expand();
+
 class NewConverter {
   constructor() {
     this.getCity();
-    this.getSum();
-    this.getKursFromBot();
+    // this.getKursFromBot();
+    this.controlPanel();
   }
+controlPanel(){
+    const result = document.querySelector('.result');
+    result.addEventListener('click',(e)=>{
+      const { value: sum } = document.getElementById("summa");
+    const { value: proc } = document.getElementById('proc');
+    const { value: city } = document.getElementById("city");
+    const { value: type } = document.getElementById('type');
+    const { value: valuta } = document.getElementById('valuta');
 
+    if (sum && proc ) {
+      console.log('Заполнено');
+      this.getData(sum,proc,city,type,valuta);
+    }else {
+      alert('Заполни все поля')
+    }
+    })
+}
   getCity() {
     const city = document.getElementById("city");
     console.log(city.value);
@@ -15,16 +32,17 @@ class NewConverter {
     });
   }
 
-  getSum() {
-    const sumInput = document.getElementById("summa");
-    sumInput.addEventListener("keyup", (e) => {
-      let sendValue = sumInput.value;
-      this.getKursFromBot(sendValue)
-      console.log(sendValue);
-    });
+  getData(sum,proc,city,type,valuta) {
+    const data = { sum, proc, city, type, valuta };
+    console.log(data);
+    this.sendData(data)
   }
-  getKursFromBot(data){
-    telega.sendData(data)
+  sendData(data){
+    telega.MainButton.textColor = "#FFFFFF";
+    telega.MainButton.color="#2cab37"
+    telega.MainButton.setText("Учим бота считать цифры");
+    telega.MainButton.show();
+    // telega.sendData(data)
  }
 }
 
