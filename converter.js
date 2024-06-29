@@ -1,3 +1,5 @@
+let telega= window.Telegram.WebApp;
+telega.expand();
 class NewConverter {
   constructor() {
     this.getCity();
@@ -17,14 +19,12 @@ class NewConverter {
     const sumInput = document.getElementById("summa");
     sumInput.addEventListener("keyup", (e) => {
       let sendValue = sumInput.value;
+      this.getKursFromBot(sendValue)
       console.log(sendValue);
     });
   }
-  getKursFromBot(){
-   const tg = window.Telegram.WebApp;
-  tg.expand();
-   const data = { message: "Hello, Bot!" };
-            tg.sendData(JSON.stringify(data));
+  getKursFromBot(data){
+    telega.sendData(data)
  }
 }
 
