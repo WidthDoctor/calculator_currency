@@ -3,24 +3,18 @@ telega.expand();
 
 class NewConverter {
   constructor() {
-    this.getCity();
-    // this.getKursFromBot();
     this.controlPanel();
   }
 controlPanel(){
     const result = document.querySelector('.result');
     result.addEventListener('click',(e)=>{
       const { value: sum } = document.getElementById("summa");
-    const { value: proc } = document.getElementById('proc');
-    const { value: city } = document.getElementById("city");
-    const { value: type } = document.getElementById('type');
-    const { value: valuta } = document.getElementById('valuta');
 
-    if (sum && proc ) {
+    if (sum) {
       console.log('Заполнено');
-      this.getData(sum,proc,city,type,valuta);
+      this.getData(sum);
     }else {
-      alert('Заполни все поля')
+      alert('Введи сумму')
     }
     })
 }
@@ -32,8 +26,8 @@ controlPanel(){
     });
   }
 
-  getData(sum,proc,city,type,valuta) {
-    const data = { sum, proc, city, type, valuta };
+  getData(sum) {
+    const data = { sum };
     console.log(data);
     this.sendData(data)
   }
