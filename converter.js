@@ -8,23 +8,22 @@ class NewConverter {
   }
 
   controlPanel() {
-    const result = document.querySelector('.result');
-    result.addEventListener('click', () => {
+    const result = document.querySelector(".result");
+    result.addEventListener("click", () => {
       const sumInput = document.getElementById("summa");
-      const sum = sumInput ? sumInput.value : '';
+      const sum = sumInput.value;
 
       if (sum) {
-        console.log('Заполнено');
+        console.log("Заполнено");
         this.getData(sum);
       } else {
-        alert('Введи сумму');
+        alert("Введи сумму");
       }
     });
   }
 
   getData(sum) {
     const data = { sum };
-    console.log(data);
     this.sendData(data);
   }
 
