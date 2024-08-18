@@ -40,12 +40,12 @@ class NewConverter {
   sendData(data) {
     telega.MainButton.textColor = "#FFFFFF";
     telega.MainButton.color = "#2cab37";
-    telega.MainButton.setText("Учим бота считать цифры");
+    telega.MainButton.setText("Считаем ...");
     telega.MainButton.show();
 
     setTimeout(() => {
       telega.sendData(JSON.stringify(data));
-    }, 5000);
+    }, 1000);
   }
 }
 
