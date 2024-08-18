@@ -1,7 +1,17 @@
 let telega = window.Telegram.WebApp;
 
 telega.expand();
-
+document.addEventListener('click', function(event) {
+  const inputField = document.getElementById('summa');
+  if (!inputField.contains(event.target)) {
+      inputField.blur(); // убирает фокус с input и закрывает клавиатуру
+  }
+});
+document.getElementById('summa').addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+      this.blur(); // убирает фокус с input и закрывает клавиатуру
+  }
+});
 class NewConverter {
   constructor() {
     this.controlPanel(); // Инициализация панели управления
